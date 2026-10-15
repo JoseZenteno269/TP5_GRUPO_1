@@ -13,7 +13,6 @@ public class DaoClientes implements I_DaoClientes {
 
     @Override
     public boolean agregarCliente(Clientes cliente) {
-    	String consulta = "INSERT INTO clientes (dni, cuil, nombre, apellido, sexo, fecha_nacimiento, direccion, nacionalidad, localidad, provincia, correo_electronico, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         Object[] parametros= {
         	cliente.getDNI(),
         	cliente.getCuil(),
@@ -28,9 +27,9 @@ public class DaoClientes implements I_DaoClientes {
         	cliente.getEmail(),
         	cliente.getTelefono()
         }; 
-        
-        Datos datos = new Datos();
-    	return datos.ejecutarAccion(consulta, parametros) != 0;
+
+    	return datos.EjecutarAccionIUD("INSERT INTO clientes (dni, cuil, nombre, apellido, sexo, fecha_nacimiento, "
+    			+ "direccion, nacionalidad, localidad, provincia, correo_electronico, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", parametros) != 0;
     }
 
     @Override
@@ -74,7 +73,6 @@ public class DaoClientes implements I_DaoClientes {
     public boolean existeEmail(String email) {
 		String consulta = "SELECT 1 FROM clientes WHERE correo_electronico = ?";
 				
-				Datos datos = new Datos();
 				try (Connection conexion = datos.obtenerConexion();
 					     PreparedStatement ps = conexion.prepareStatement(consulta)) {
 

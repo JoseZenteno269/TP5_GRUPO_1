@@ -6,6 +6,8 @@ import java.sql.SQLException;
 public interface I_Datos {
 
     Connection obtenerConexion() throws SQLException;
-
-    int ejecutarAccion(String consulta, Object[] parametros);
+    
+    public int EjecutarAccionIUD(String consulta, Object[] parametros);
+    		
+    public int EjecutarAccionSELECT(String consulta, Object[] parametros);
 }

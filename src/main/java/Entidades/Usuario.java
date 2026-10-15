@@ -5,7 +5,7 @@ public class Usuario {
 	//Attributos
 	
 		private int idUsuario;
-		private String NombreUsuario;
+		private String user;
 		private String Password;
 		
 		// Constructor
@@ -22,12 +22,12 @@ public class Usuario {
 			this.idUsuario = idUsuario;
 		}
 
-		public String getNombreUsuario() {
-			return NombreUsuario;
+		public String getUser() {
+			return user;
 		}
 
-		public void setNombreUsuario(String nombreUsuario) {
-			NombreUsuario = nombreUsuario;
+		public void setUser(String user) {
+			this.user = user;
 		}
 
 		public String getPassword() {

@@ -9,5 +9,6 @@ public interface I_DaoClientes {
     boolean agregarCliente(Clientes cliente);
 
     ArrayList<Clientes> listarClientes();
+    
     boolean existeEmail(String email);
 }
