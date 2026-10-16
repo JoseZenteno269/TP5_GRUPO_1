@@ -9,7 +9,7 @@ public class Clientes {
 		private String cuil;
 		private String nombre;
 		private String Apellido;
-		private Character sexo;
+		private char sexo;
 		private String FechaNacimiento;
 		private String domicilio;
 		private String Nacionalidad;
@@ -64,12 +64,12 @@ public class Clientes {
 			Apellido = apellido;
 		}
 
-		public Character getSexo() {
+		public char getSexo() {
 			return sexo;
 		}
 
-		public void setSexo(Character sexo) {
-			this.sexo = sexo;
+		public void setSexo(char c) {
+			this.sexo = c;
 		}
 
 		public String getFechaNacimiento() {
