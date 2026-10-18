@@ -12,27 +12,11 @@
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
     <servlet>
-        <servlet-name>ServletLogin</servlet-name>
-        <servlet-class>Servlets.ServletLogin</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ServletLogin</servlet-name>
-        <url-pattern>/ServletLogin</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>ServletClientes</servlet-name>
         <servlet-class>Servlets.ServletClientes</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletClientes</servlet-name>
         <url-pattern>/ServletClientes</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ServletListado</servlet-name>
-        <servlet-class>Servlets.ServletListado</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ServletListado</servlet-name>
-        <url-pattern>/ServletListado</url-pattern>
     </servlet-mapping>
 </web-app>

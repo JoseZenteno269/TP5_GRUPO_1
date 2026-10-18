@@ -6,25 +6,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Iniciar sesión</title>
-<link rel="stylesheet" href="css/Login.css">
+<style>
+	<jsp:include page="css\Login.css"></jsp:include>
+</style>
 </head>
 <body>
+	<header></header>
+	
+	<main>
+		<section>
+        	<form method="post" action="LoginServlet">
+				<div>
+        			<h2>Iniciar sesión</h2>
+            		<label for="txtUsuario">Usuario</label>
+            		<input type="text" id="txtUsuario" name="txtUsuario" required>
 
-    <div class="login-card">
-        <h1>Iniciar sesión</h1>
+            		<label for="txtPassword">Contraseña</label>
+            		<input type="password" id="txtPassword" name="txtPassword" required>
 
-        <form method="post" action="LoginServlet">
+            		<input type="submit" name="btnIngresar" value="Ingresar">
+    			</div>
+        	</form>
+		</section>
+	</main>
 
-            <label for="txtUsuario">Usuario</label>
-            <input type="text" id="txtUsuario" name="txtUsuario" required>
-
-            <label for="txtPassword">Contraseña</label>
-            <input type="password" id="txtPassword" name="txtPassword" required>
-
-            <input type="submit" name="btnIngresar" value="Ingresar">
-
-        </form>
-    </div>
-
+	<footer></footer>
 </body>
 </html>
