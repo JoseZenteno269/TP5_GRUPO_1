@@ -19,4 +19,13 @@
         <servlet-name>ServletClientes</servlet-name>
         <url-pattern>/ServletClientes</url-pattern>
     </servlet-mapping>
+    <servlet>
+    <servlet-name>ServletListadoClientes</servlet-name>
+    <servlet-class>Servlets.ServletListadoClientes</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>ServletListadoClientes</servlet-name>
+    <url-pattern>/ServletListadoClientes</url-pattern>
+</servlet-mapping>
 </web-app>

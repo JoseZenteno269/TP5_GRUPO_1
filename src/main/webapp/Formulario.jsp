@@ -17,14 +17,22 @@
 			<h2>Menú</h2>
 			<a href="ServletClientes" >Alta de Cliente</a>
 			<br>
-			<a >Listado de Cliente</a>
+			<a href="ServletListadoClientes">Listado de Cliente</a>
 		</section>
 		<section class="section2">
 			<h1>Formulario de Cliente</h1>
 
-			<p>Usuario: </p>
+			<% if (session.getAttribute("usuario") != null) { %>
+				<p>Usuario: <%= session.getAttribute("usuario") %></p>
+			<% } %>
+			<% if (request.getAttribute("mensajeExito") != null) { %>
+				<p><%= request.getAttribute("mensajeExito") %></p>
+			<% } %>
+			<% if (request.getAttribute("mensajeError") != null) { %>
+				<p><%= request.getAttribute("mensajeError") %></p>
+			<% } %>
 			
-			<form method="post" action="ServletClientes">
+			<form method="post" action="<%= request.getContextPath() %>/ServletClientes">
 				<div class="formulario">
 					<table>
 						<tr>
