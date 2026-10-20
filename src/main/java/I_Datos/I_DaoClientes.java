@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import Entidades.Clientes;
 
 public interface I_DaoClientes {
+	
+	Boolean agregarCliente(Clientes clientes); 
+	
+	ArrayList<Clientes> obtenerClientes(); 
 
-    boolean agregarCliente(Clientes cliente);
-
-    ArrayList<Clientes> listarClientes();
-    
-    boolean existeEmail(String email);
 }

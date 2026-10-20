@@ -6,49 +6,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import I_Datos.I_Datos;
-
-public class Datos implements I_Datos{
+public class Datos {
 	
     private String host = "jdbc:mysql://localhost:3306/";
     private String user = "root";
-    private String pass = "root";
+    private String pass = "asusrog7";
     private String dbName = "sistema_clientes";
     
     public Datos() {
     	
     }
     
-    @Override
     public Connection obtenerConexion() throws SQLException {
         try {
         	Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return DriverManager.getConnection(host + dbName + "?useSSL=false&serverTimezone=UTC", user, pass);
+        return DriverManager.getConnection(host + dbName, user, pass);
     }
-    
-//    @Override
-//	public int ejecutarAccion(String consulta, Object[] parametros) {
-//		int filasafectadas = 0; 
-//		
-//		try(Connection connection = obtenerConexion(); 
-//			PreparedStatement preparedStatement = connection.prepareStatement(consulta);){
-//			
-//			for(int i = 0; i < parametros.length; i ++) {
-//				preparedStatement.setObject(i + 1, parametros[i]);
-//			}
-//			
-//			filasafectadas = preparedStatement.executeUpdate(); 
-//		}
-//		catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return filasafectadas; 
-//	}
-
     
     /**
      * Ejecuta una consulta SQL de tipo INSERT, UPDATE o DELETE.
@@ -57,8 +33,7 @@ public class Datos implements I_Datos{
      * @param parametros Parámetros que se asignarán a la consulta.
      * @return Cantidad de filas afectadas.
      */
-	@Override
-	public int EjecutarAccionIUD(String consulta, Object[] parametros) {
+    public int EjecutarAccionIUD(String consulta, Object[] parametros) {
 		int filasafectadas = 0; 
 		
 		try(Connection connection = obtenerConexion(); 
@@ -77,7 +52,6 @@ public class Datos implements I_Datos{
 		return filasafectadas; 
 	}
 	
-	
     /**
     * Ejecuta una consulta SQL de tipo SELECT y verifica si devuelve al menos una fila.
 	*
@@ -85,7 +59,6 @@ public class Datos implements I_Datos{
     * @param parametros Valores que serán asignados a los parámetros de la consulta.
     * @return 1 si la consulta devuelve al menos una fila, 0 si no devuelve ninguna.
     */
-	@Override
 	public int EjecutarAccionSELECT(String consulta, Object[] parametros) {
 		
 		try(Connection connection = obtenerConexion(); 

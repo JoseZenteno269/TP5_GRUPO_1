@@ -3,89 +3,62 @@ package Datos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
 import Entidades.Clientes;
 import I_Datos.I_DaoClientes;
 
 public class DaoClientes implements I_DaoClientes {
+	
+	Datos datos = new Datos(); 
 
-    Datos datos = new Datos();
+	@Override
+	public Boolean agregarCliente(Clientes clientes) {
+		Object[] parametros = {clientes.getDni(), clientes.getCuil(), clientes.getNombre(), clientes.getApellido(), clientes.getSexo(), 
+				clientes.getFecha_nacimiento(), clientes.getDireccion(), clientes.getNacionalidad(), clientes.getLocalidad(), clientes.getProvincia(), 
+				clientes.getCorreo_electronico(), clientes.getTelefono()};
+		
+		return datos.EjecutarAccionIUD("INSERT INTO clientes (dni, cuil, nombre, apellido, sexo, fecha_nacimiento, "
+				+ "direccion, nacionalidad, localidad, provincia, correo_electronico, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+				parametros) != 0;
+	}
 
-    @Override
-    public boolean agregarCliente(Clientes cliente) {
-        Object[] parametros= {
-        	cliente.getDNI(),
-        	cliente.getCuil(),
-        	cliente.getNombre(),
-        	cliente.getApellido(),
-        	cliente.getSexo(),
-        	cliente.getFechaNacimiento(),
-        	cliente.getDomicilio(),
-        	cliente.getNacionalidad(),
-        	cliente.getLocalidad(),
-        	cliente.getProvincia(),
-        	cliente.getEmail(),
-        	cliente.getTelefono()
-        }; 
-
-    	return datos.EjecutarAccionIUD("INSERT INTO clientes (dni, cuil, nombre, apellido, sexo, fecha_nacimiento, "
-    			+ "direccion, nacionalidad, localidad, provincia, correo_electronico, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", parametros) != 0;
-    }
-
-    @Override
-    public ArrayList<Clientes> listarClientes() {
-    	
-    	ArrayList<Clientes> listaClientes= new ArrayList<Clientes>();
-    	
-    	String consulta = "SELECT * FROM clientes";
-
-    	try (Connection conexion = datos.obtenerConexion();
-    	     PreparedStatement ps = conexion.prepareStatement(consulta);
-    	     ResultSet RS = ps.executeQuery()) {
-
-    	    while(RS.next()) {
-    	    	Clientes c = new Clientes();
-    	    	
-    	    	c.setIdCliente(RS.getInt("id_cliente"));
-    	    	c.setDNI(RS.getString("dni"));
-    	    	c.setCuil(RS.getString("cuil"));
-    	    	c.setNombre(RS.getString("nombre"));
-    	    	c.setApellido(RS.getString("apellido"));
-    	    	c.setSexo(RS.getString("sexo").charAt(0));
-    	    	c.setFechaNacimiento(RS.getString("fecha_nacimiento"));
-    	    	c.setDomicilio(RS.getString("direccion"));
-    	    	c.setNacionalidad(RS.getString("nacionalidad"));
-    	    	c.setLocalidad(RS.getString("localidad"));
-    	    	c.setProvincia(RS.getString("provincia"));
-    	    	c.setEmail(RS.getString("correo_electronico"));
-    	    	c.setTelefono(RS.getString("telefono"));
-    	    	
-    	    	listaClientes.add(c);
-    	    }
-
-    	} catch (Exception e) {
-    	    e.printStackTrace();
-    	}
-        return listaClientes;
-    }
-
-    @Override
-    public boolean existeEmail(String email) {
-		String consulta = "SELECT 1 FROM clientes WHERE correo_electronico = ?";
+	@Override
+	public ArrayList<Clientes> obtenerClientes() {
+		
+		String consulta = "SELECT dni, cuil, nombre, apellido, sexo, fecha_nacimiento, direccion, nacionalidad, localidad, provincia, correo_electronico, telefono FROM Clientes";
+		ArrayList<Clientes> aClientes = new ArrayList<Clientes>(); 
+		
+		try(Connection connection = datos.obtenerConexion(); 
+			PreparedStatement preparedStatement = connection.prepareStatement(consulta);
+			ResultSet resultSet = preparedStatement.executeQuery();){
+			
+			while(resultSet.next()) {
+				Clientes clientes = new Clientes(); 
 				
-				try (Connection conexion = datos.obtenerConexion();
-					     PreparedStatement ps = conexion.prepareStatement(consulta)) {
+				clientes.setDni(resultSet.getString(1));
+				clientes.setCuil(resultSet.getString(2));
+				clientes.setNombre(resultSet.getString(3));
+				clientes.setApellido(resultSet.getString(4));
+				clientes.setSexo(resultSet.getString(5));
+				clientes.setFecha_nacimiento(resultSet.getString(6));
+				clientes.setDireccion(resultSet.getString(7));
+				clientes.setNacionalidad(resultSet.getString(8));
+				clientes.setLocalidad(resultSet.getString(9));
+				clientes.setProvincia(resultSet.getNString(10));
+				clientes.setCorreo_electronico(resultSet.getString(11));
+				clientes.setTelefono(resultSet.getString(12));
+				
+				aClientes.add(clientes); 
+			}
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return aClientes; 
+	}
 
-					    ps.setString(1, email);
-
-					    try (ResultSet RS = ps.executeQuery()) {
-					        return RS.next();
-					    }
-
-					} catch (Exception e) {
-					    e.printStackTrace();
-					}
-				return false;
-
-    }
 }

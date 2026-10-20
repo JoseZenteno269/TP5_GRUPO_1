@@ -1,131 +1,154 @@
 package Entidades;
 
+
 public class Clientes {
-
-	// Attributos
 	
-		private int idCliente;
-		private String DNI;
-		private String cuil;
-		private String nombre;
-		private String Apellido;
-		private char sexo;
-		private String FechaNacimiento;
-		private String domicilio;
-		private String Nacionalidad;
-		private String Localidad;
-		private String Provincia;
-		private String email;
-		private String Telefono;
-		
-		// Constructor
-		
-		public Clientes() {}
+    private String dni;
+    private String cuil;
+    private String nombre; 
+    private String apellido;
+    private String sexo;
+    private String fecha_nacimiento;
+    private String direccion;
+    private String nacionalidad;
+    private String localidad;
+    private String provincia;
+    private String correo_electronico;
+    private String telefono;
+    
+    public Clientes() {
+    	dni = "Sin definir"; 
+    	cuil = "Sin definir"; 
+    	nombre = "Sin definir"; 
+    	apellido = "Sin definir"; 
+    	sexo = "Sin definir"; 
+    	fecha_nacimiento = "Sin definir"; 
+    	direccion = "Sin definir"; 
+    	nacionalidad = "Sin definir"; 
+    	localidad = "Sin definir"; 
+    	provincia = "Sin definir"; 
+    	correo_electronico = "Sin definir"; 
+    	telefono = "Sin definir";
+    	
+    }
+    
+    public Clientes(String dni, String cuil, String nombre, String apellido, String sexo, String fecha_nacimiento, String direccion, String nacionalidad, String localidad, String provincia, String correo, String telefono) {
+    	this.dni = dni; 
+    	this.cuil = cuil; 
+    	this.nombre = nombre; 
+    	this.apellido = apellido; 
+    	this.sexo = sexo; 
+    	this.fecha_nacimiento = fecha_nacimiento; 
+    	this.direccion = direccion; 
+    	this.nacionalidad = nacionalidad; 
+    	this.localidad = localidad; 
+    	this.provincia = provincia; 
+    	this.correo_electronico = correo; 
+    	this.telefono = telefono;
+    }
 
-		// Setters y Getters
-		
-		public int getIdCliente() {
-			return idCliente;
-		}
+	public String getDni() {
+		return dni;
+	}
 
-		public void setIdCliente(int idCliente) {
-			this.idCliente = idCliente;
-		}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
-		public String getDNI() {
-			return DNI;
-		}
+	public String getCuil() {
+		return cuil;
+	}
 
-		public void setDNI(String dNI) {
-			DNI = dNI;
-		}
+	public void setCuil(String cuil) {
+		this.cuil = cuil;
+	}
 
-		public String getCuil() {
-			return cuil;
-		}
+	public String getNombre() {
+		return nombre;
+	}
 
-		public void setCuil(String cuil) {
-			this.cuil = cuil;
-		}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-		public String getNombre() {
-			return nombre;
-		}
+	public String getApellido() {
+		return apellido;
+	}
 
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-		public String getApellido() {
-			return Apellido;
-		}
+	public String getSexo() {
+		return sexo;
+	}
 
-		public void setApellido(String apellido) {
-			Apellido = apellido;
-		}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
-		public char getSexo() {
-			return sexo;
-		}
+	public String getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
 
-		public void setSexo(char c) {
-			this.sexo = c;
-		}
+	public void setFecha_nacimiento(String fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
 
-		public String getFechaNacimiento() {
-			return FechaNacimiento;
-		}
+	public String getDireccion() {
+		return direccion;
+	}
 
-		public void setFechaNacimiento(String fechaNacimiento) {
-			FechaNacimiento = fechaNacimiento;
-		}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-		public String getDomicilio() {
-			return domicilio;
-		}
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
 
-		public void setDomicilio(String domicilio) {
-			this.domicilio = domicilio;
-		}
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
 
-		public String getNacionalidad() {
-			return Nacionalidad;
-		}
+	public String getLocalidad() {
+		return localidad;
+	}
 
-		public void setNacionalidad(String nacionalidad) {
-			Nacionalidad = nacionalidad;
-		}
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
 
-		public String getLocalidad() {
-			return Localidad;
-		}
+	public String getProvincia() {
+		return provincia;
+	}
 
-		public void setLocalidad(String localidad) {
-			Localidad = localidad;
-		}
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
 
-		public String getProvincia() {
-			return Provincia;
-		}
+	public String getCorreo_electronico() {
+		return correo_electronico;
+	}
 
-		public void setProvincia(String provincia) {
-			Provincia = provincia;
-		}
+	public void setCorreo_electronico(String correo_electronico) {
+		this.correo_electronico = correo_electronico;
+	}
 
-		public String getEmail() {
-			return email;
-		}
+	public String getTelefono() {
+		return telefono;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 
-		public String getTelefono() {
-			return Telefono;
-		}
-
-		public void setTelefono(String telefono) {
-			Telefono = telefono;
-		}
-
+	@Override
+	public String toString() {
+		return "Clientes [dni=" + dni + ", cuil=" + cuil + ", nombre=" + nombre + ", apellido=" + apellido + ", sexo="
+				+ sexo + ", fecha_nacimiento=" + fecha_nacimiento + ", direccion=" + direccion + ", nacionalidad="
+				+ nacionalidad + ", localidad=" + localidad + ", provincia=" + provincia + ", correo_electronico="
+				+ correo_electronico + ", telefono=" + telefono + "]";
+	}
+	
 }

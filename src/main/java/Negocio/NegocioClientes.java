@@ -6,34 +6,36 @@ import Datos.DaoClientes;
 import Entidades.Clientes;
 import I_Negocio.I_NegocioClientes;
 
-public class NegocioClientes implements I_NegocioClientes {
+public class NegocioClientes implements I_NegocioClientes{
 	
-	DaoClientes daoCli = new DaoClientes();
+	DaoClientes daoClientes = new DaoClientes();
 
 	@Override
-	public Boolean agregarCliente(String dni, String cuil, String nombre, String apellido, Character sexo, String fecha_nacimiento, String direccion, String nacionalidad, String localidad, String provincia,String correo, String telefono) 
-	{
-		Clientes clientes = new Clientes();
+	public Boolean agregarCliente(String dni, String cuil, String nombre, String apellido, String sexo,
+			String fecha_nacimiento, String direccion, String nacionalidad, String localidad, String provincia,
+			String correo, String telefono) {
 		
-		clientes.setDNI(dni);
+		Clientes clientes = new Clientes(); 
+		
+		clientes.setDni(dni);
 		clientes.setCuil(cuil);
 		clientes.setNombre(nombre);
 		clientes.setApellido(apellido);
 		clientes.setSexo(sexo);
-		clientes.setFechaNacimiento(fecha_nacimiento);
-		clientes.setDomicilio(direccion);
+		clientes.setFecha_nacimiento(fecha_nacimiento);
+		clientes.setDireccion(direccion);
 		clientes.setNacionalidad(nacionalidad);
 		clientes.setLocalidad(localidad);
 		clientes.setProvincia(provincia);
-		clientes.setEmail(correo);
+		clientes.setCorreo_electronico(correo);
 		clientes.setTelefono(telefono);
 		
-		return daoCli.agregarCliente(clientes);
+		return daoClientes.agregarCliente(clientes);
 	}
 
 	@Override
 	public ArrayList<Clientes> obtenerClientes() {
-		return daoCli.listarClientes();
+		return daoClientes.obtenerClientes();
 	}
 
 }

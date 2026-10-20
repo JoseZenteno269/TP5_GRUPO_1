@@ -1,13 +1,14 @@
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <style>
 	<jsp:include page="css\Formulario.css"></jsp:include>
 </style>
+<title>TP 5</title>
 </head>
 <body>
 	<header></header>
@@ -15,24 +16,18 @@
 	<main>
 		<section class="section1">
 			<h2>Menú</h2>
-			<a href="ServletClientes" >Alta de Cliente</a>
+			<a href="ServletClientes?accion=formulario" >Alta de Cliente</a>
 			<br>
-			<a href="ServletListadoClientes">Listado de Cliente</a>
+			<a href="ServletClientes?accion=listado" >Listado de Cliente</a>
 		</section>
 		<section class="section2">
 			<h1>Formulario de Cliente</h1>
-
-			<% if (session.getAttribute("usuario") != null) { %>
-				<p>Usuario: <%= session.getAttribute("usuario") %></p>
-			<% } %>
-			<% if (request.getAttribute("mensajeExito") != null) { %>
-				<p><%= request.getAttribute("mensajeExito") %></p>
-			<% } %>
-			<% if (request.getAttribute("mensajeError") != null) { %>
-				<p><%= request.getAttribute("mensajeError") %></p>
-			<% } %>
+			<%
+				String usuario = session.getAttribute("Usuario").toString();
+			%>
+			<p>Usuario: <%= usuario %></p>
 			
-			<form method="post" action="<%= request.getContextPath() %>/ServletClientes">
+			<form method="post" action="ServletClientes">
 				<div class="formulario">
 					<table>
 						<tr>
@@ -102,9 +97,24 @@
 						</tr>
 						<tr>
 							<td>
+								<input type="hidden" name="accion" value="formulario">
 								<input type="submit" value="Guardar cliente" name="btnGuardar">
 							</td>
 							<td>
+								<%
+									if(request.getAttribute("Estado") != null){
+										if((Boolean)request.getAttribute("Estado")){
+											%>
+												<p>Cliente agregado correctamente</p>
+											<%
+										}
+										else{
+											%>
+												<p>Ocurrio un error al ingresar al Cliente</p>
+											<%
+										}
+									}
+								%>
 							</td>
 						</tr>
 					</table>

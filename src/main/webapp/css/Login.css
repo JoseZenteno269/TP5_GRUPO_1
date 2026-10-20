@@ -4,10 +4,10 @@
 	--primario: #0c1f31;
     --secundario: #ffffff;
     --body: #edf2f8;
-    --border_color: #dfe3ea;
+    --border_color: #c9c9c9;
     --shadow: #bfbfbf;
-    --bottom: #2f6bff;
-    --bottom-hover: #1f56e0;
+    --bottom: #258bf1;
+    --bottom-hover: #1583f0;
     --text_main: #0f172a;
     --text_muted: #64748b;
     --primary: #2563eb;
@@ -44,7 +44,7 @@ section{
 	background-color: var(--secundario);
     border: none;
     border-radius: var(--radius);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 20px 1px var(--shadow);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -52,20 +52,10 @@ section{
 }
 
 section div{
-	width: 100%;
-    max-width: 380px;
-	text-align: start; 
+	text-align: center; 
 }
 
-section div h2{
-	margin-top: 10px;
-	margin-bottom: 15px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #111827;
-}
-
-section div label{
+section div p{
 	text-align: start; 
 	font-size: 15px;
 	margin-top: 10px; 
@@ -73,44 +63,43 @@ section div label{
 }
 
 section div input[type="text"], input[type="password"]{
-	margin-bottom: 50px; 
+	margin-bottom: 30px; 
 	border-radius: 8px;
-	outline: none;
 	border: 1px solid var(--border_color); 
-	width: 365px; 
-	height: 35px;
+	width: 400px; 
+	height: 40px;
 	font-size: 15px;
 	padding-left: 10px;
 }
 
-section div input[type="text"]:focus, input[type="password"]:focus{
-	border-color: var(--bottom);
-}
-
 section div input[type="submit"]{
-	margin-top: 10px;
-	margin-bottom: 20px;
-	width: 100%; 
+	width: 350px; 
 	height: 35px;
 	border-radius: 8px; 
 	border: none; 
 	background-color: var(--bottom);
 	color: white;  
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
 	transition: 0.3s
 }
 
 section div input[type="submit"]:hover{
 	background-color: var(--bottom-hover);
+	box-shadow: 1px 1px 3px 0px var(--bottom-hover);
 }
 
-.error {
-    margin: 0 0 16px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    background-color: #fee2e2;
-    color: #991b1b;
-    font-size: 12px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

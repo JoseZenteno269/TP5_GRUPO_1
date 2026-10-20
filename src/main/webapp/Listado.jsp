@@ -1,79 +1,78 @@
+<%@page import="Entidades.Clientes"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Entidades.Clientes" %>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Listado de Clientes</title>
-    <link rel="stylesheet" href="css/Listado.css">
+<meta charset="UTF-8">
+<title>TP 5</title>
+
+<style>
+	<jsp:include page="css\Listado.css"></jsp:include>
+</style>
 </head>
 <body>
+	<header></header>
+	
+	<main>
 		<section class="section1">
 			<h2>Menú</h2>
-			<a href="ServletClientes" >Alta de Cliente</a>
+			<a href="ServletClientes?accion=formulario" >Alta de Cliente</a>
 			<br>
-			<a href="ServletListadoClientes">Listado de Cliente</a>
+			<a href="ServletClientes?accion=listado" >Listado de Cliente</a>
 		</section>
-
-    <h1>Listado de Clientes</h1>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>DNI</th>
-                <th>CUIL</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Sexo</th>
-                <th>Fecha Nacimiento</th>
-                <th>Domicilio</th>
-                <th>Nacionalidad</th>
-                <th>Localidad</th>
-                <th>Provincia</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <%
-                ArrayList<Clientes> lista =
-                    (ArrayList<Clientes>) request.getAttribute("listaClientes");
-
-                if (lista != null && !lista.isEmpty()) {
-                    for (Clientes cliente : lista) {
-            %>
-                <tr>
-                    <td><%= cliente.getIdCliente() %></td>
-                    <td><%= cliente.getDNI() %></td>
-                    <td><%= cliente.getCuil() %></td>
-                    <td><%= cliente.getNombre() %></td>
-                    <td><%= cliente.getApellido() %></td>
-                    <td><%= cliente.getSexo() %></td>
-                    <td><%= cliente.getFechaNacimiento() %></td>
-                    <td><%= cliente.getDomicilio() %></td>
-                    <td><%= cliente.getNacionalidad() %></td>
-                    <td><%= cliente.getLocalidad() %></td>
-                    <td><%= cliente.getProvincia() %></td>
-                    <td><%= cliente.getEmail() %></td>
-                    <td><%= cliente.getTelefono() %></td>
-                </tr>
-            <%
-                    }
-                } else {
-            %>
-                <tr>
-                    <td colspan="13">No hay clientes para mostrar.</td>
-                </tr>
-            <%
-                }
-            %>
-        </tbody>
-    </table>
-
+		<section class="section2">
+			<h1>Listado de Clientes</h1>
+			<%
+				String usuario = session.getAttribute("Usuario").toString();
+			%>
+			<p>Usuario: <%= usuario %></p>
+			<form method="get" action="ServletClientes">
+			<input type="hidden" name="accion" value="listado">
+				<div>
+					<table id="tabla-clientes" class="display">
+						<thead>
+							<tr>
+								<th>DNI</th>
+								<th>CUIL</th>
+								<th>Nombre y Apellido</th>
+								<th>Sexo</th>
+								<th>Fecha de Nacimiento</th>
+								<th>Direccion</th>
+								<th>Nacionalidad</th>
+								<th>Localidad</th>
+								<th>Provincia</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								ArrayList<Clientes> aClientes = (ArrayList<Clientes>)request.getAttribute("Clientes"); 
+								if(aClientes != null){
+									for(Clientes c : aClientes){
+										%>
+											<tr>
+												<td><%= c.getDni() %></td>
+												<td><%= c.getCuil() %></td>
+												<td><%= c.getNombre() + " " + c.getApellido() %></td>
+												<td><%= c.getSexo() %></td>
+												<td><%= c.getFecha_nacimiento() %></td>
+												<td><%= c.getDireccion() %></td>
+												<td><%= c.getNacionalidad() %></td>
+												<td><%= c.getLocalidad() %></td>
+												<td><%= c.getProvincia() %></td>
+											</tr>
+										<%
+									}
+								}
+							%>
+						</tbody>
+					</table>
+				</div>
+			</form>
+		</section>
+	</main>
+	
+	<footer></footer>
 </body>
 </html>
