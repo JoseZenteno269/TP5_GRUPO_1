@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TP 5</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/3.1.3/css/dataTables.dataTables.css">
 
 <style>
-	<jsp:include page="css\Listado.css"></jsp:include>
+    <jsp:include page="css\Listado.css"></jsp:include>
 </style>
 </head>
 <body>
@@ -74,5 +75,19 @@
 	</main>
 	
 	<footer></footer>
+	    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            new DataTable('#tabla-clientes', {
+                pageLength: 10,
+                lengthMenu: [5, 10, 25, 50],
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/2.3.4/i18n/es-ES.json'
+                }
+            });
+        });
+    </script>
 </body>
 </html>
